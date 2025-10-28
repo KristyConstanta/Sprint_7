@@ -30,3 +30,8 @@ class TestCreateOrder:
         r = requests.post(f"{url}/api/v1/orders", json=payload)
         assert r.status_code == 201
         assert 'track' in r.json()
+
+        #Удаляем созданный заказ таким образом чистим данные после автотеста
+        track_number = r.json().get('track') 
+        order_r = requests.put(f"{url}/api/v1/orders/cancel?track={track_number}")
+        assert order_r.status_code == 200
