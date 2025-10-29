@@ -7,7 +7,7 @@ from data.courier_data import generation_new_data_courier
 class TestCreateCourier:
 
     @allure.title('Создание курьера')
-    @allure.step('Проверка создания курьера (код - 201 и текст - "ok": True')
+    @allure.description('Проверка создания курьера (код - 201 и текст - "ok": True')
     def test_create_courier(self, courier_data_fix):
         courier = courier_data_fix
         response = requests.post(f"{url}/api/v1/courier", data=courier)
